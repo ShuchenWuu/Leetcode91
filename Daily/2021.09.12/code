@@ -1,0 +1,35 @@
+#include <iostream> 
+#include <stack> 
+using namespace std;
+
+class CustomStack {
+public:
+        vector<int> stack;
+        int size;
+    CustomStack(int maxSize) {
+        stack.resize(maxSize);
+        size = 0;
+    }
+    
+    void push(int x) {
+        if (size < stack.size()){
+            stack[size] = x;
+            size++;            
+        }
+    }
+    
+    int pop() {
+        int res = -1;
+        if (size > 0){
+            size--;
+            res = stack[size];
+        }
+
+        return res;
+    }
+    
+    void increment(int k, int val) {
+        for (int i = 0; i < min(k, size); i++)
+            stack[i] += val;
+    }
+};
